@@ -34,7 +34,7 @@ lat2=-8.3;
 long1=110.085;
 long2=111.330;
 depth1=-150000;
-depth2=0;
+depth2=-60000;
 numdiv=21;
 maxiter=5;
 rng('shuffle','philox')
@@ -69,8 +69,6 @@ for iter=0:maxiter
             end
         end
     end
-    idxMinRMS=find(epiRMS==min(min(min(epiRMS))));
-    [idx1,idx2,idx3]=ind2sub(size(epiRMS),idxMinRMS);
     % plotting
     lat4plot=zeros(numdiv^3,1);
     long4plot=zeros(numdiv^3,1);
@@ -84,7 +82,7 @@ for iter=0:maxiter
     if iter<2
         scatter3(long4plot,lat4plot,depth4plot/1000,'.')
     else
-        scatter3(long4plot,lat4plot,depth4plot/1000,'o')
+        scatter3(long4plot,lat4plot,depth4plot/1000,180,'p','filled')
     end
     box on
     ax = gca;
@@ -112,6 +110,11 @@ for iter=0:maxiter
     im{iter+1} = frame2im(frame);
     pause(1)
     % creating new bound
+    idxMinRMS=find(epiRMS==min(min(min(epiRMS))));
+    [idx1,idx2,idx3]=ind2sub(size(epiRMS),idxMinRMS);
+    idx1=unique(idx1);
+    idx2=unique(idx2);
+    idx3=unique(idx3);
     lat_old=[lat1,lat2];
     long_old=[long1,long2];
     depth_old=[depth1,depth2];
