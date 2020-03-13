@@ -58,7 +58,7 @@ for iter=0:maxiter
                 Ys=(Ns+zSrcRad(idx3))*cosd(latSrcRad(idx1))*sind(longSrcRad(idx2));
                 Zs=(((1-WGS84_e2)*Ns)+zSrcRad(idx3))*sind(latSrcRad(idx1));
                 % velocity src: https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2006JB004712
-                vpMinvs=9.5e+3;
+                vpMinvs=9.7e+3;
                 tptsBBJI=sqrt((BBJI_XYZ(1)-Xs)^2 +(BBJI_XYZ(2)-Ys)^2 +(BBJI_XYZ(3)-Zs)^2)/vpMinvs;
                 tptsSMRI=sqrt((SMRI_XYZ(1)-Xs)^2 +(SMRI_XYZ(2)-Ys)^2 +(SMRI_XYZ(3)-Zs)^2)/vpMinvs;
                 tptsJAGI=sqrt((JAGI_XYZ(1)-Xs)^2 +(JAGI_XYZ(2)-Ys)^2 +(JAGI_XYZ(3)-Zs)^2)/vpMinvs;
